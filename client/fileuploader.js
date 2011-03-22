@@ -611,11 +611,18 @@ qq.extend(qq.FileUploader.prototype, {
         qq.FileUploaderBasic.prototype._onComplete.apply(this, arguments);
         // mark completed
         var item = this._getItemByFileId(id);
-        qq.remove(this._find(item, 'cancel'));
+		qq.remove(this._find(item, 'cancel'));
         qq.remove(this._find(item, 'spinner'));
+		
+		console.log(unescape(unescape(result.html)));
+		//console.log(item);
+        //jQuery("#" + id).html(result.html);
         
         if (result.success){
-            qq.addClass(item, this._classes.success);    
+            qq.addClass(item, this._classes.success);
+            jQuery(item).replaceWith(
+            	$("<div/>").html(result.html).text() //un html_enties()
+            );
         } else {
             qq.addClass(item, this._classes.fail);
         }         

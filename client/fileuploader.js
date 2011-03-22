@@ -611,7 +611,7 @@ qq.extend(qq.FileUploader.prototype, {
         qq.FileUploaderBasic.prototype._onComplete.apply(this, arguments);
 
         // mark completed
-        var item = this._getItemByFileId(id);                
+        var item = this._getItemByFileId(id);
         qq.remove(this._find(item, 'cancel'));
         qq.remove(this._find(item, 'spinner'));
         
